@@ -24,7 +24,7 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/gettin
 
 #### Point
 - 雖然大家都有 push 權限，但最好不要直接推到 main/master 分支。
-- 做法是：開一個 分支 → 開發 → Push → PR → code review。
+- 做法是：開一個 分支 → 開發 → Push → PR → Review → Merge
 
 
 
