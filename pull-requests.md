@@ -24,10 +24,11 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/gettin
 
 #### Point
 - 雖然大家都有 push 權限，但最好不要直接推到 main/master 分支。
-- 做法是：開一個 分支 → 開發 → Push → PR → code review。
+- 做法是：開一個 分支 → 開發 → Push → PR → Review → Merge
 
 
 
+<<<<<<< HEAD
 # Practice how to make an PR
 Here's two github project guide you how to make your first contribution.
 [first-contributions](https://github.com/halzq/first-contributions/blob/main/README.md)
@@ -53,3 +54,6 @@ git push -u origin feature-branch # push to origin
 # find the button "Compare and pull request"
 # submit a PR
 ```
+=======
+# 
+>>>>>>> 03914abe8a038b36bb4b3bb3b861d15f0153f8fa
