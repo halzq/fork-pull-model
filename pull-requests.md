@@ -28,4 +28,28 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/gettin
 
 
 
-# 
+# Practice how to make an PR
+Here's two github project guide you how to make your first contribution.
+[first-contributions](https://github.com/halzq/first-contributions/blob/main/README.md)
+[code-contributions](https://github.com/Roshanjossey/code-contributions/pulls)
+
+## steps
+```bash
+# Fork + Clone
+git clone https://github.com/你的帳號/專案.git
+cd 專案
+git remote add upstream https://github.com/原作者/專案.git
+
+# 建新分支修改
+git switch -c feature-branch
+# (修改檔案)
+git add . # stage
+git commit -m "新增功能或修正 bug" # commit
+git push -u origin feature-branch # push to origin
+# the -u stands for --set-upstream. It links your local branch with the remote branch you’re pushing to.
+
+# → 然後到 GitHub 開 PR
+# go to your github origin repo
+# find the button "Compare and pull request"
+# submit a PR
+```
