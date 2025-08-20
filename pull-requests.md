@@ -28,11 +28,11 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/gettin
 
 
 
-<<<<<<< HEAD
 # Practice how to make an PR
 Here's two github project guide you how to make your first contribution.
 [first-contributions](https://github.com/halzq/first-contributions/blob/main/README.md)
 [code-contributions](https://github.com/Roshanjossey/code-contributions/pulls)
+[Creating a pull request from a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
 
 ## steps
 ```bash
@@ -54,6 +54,73 @@ git push -u origin feature-branch # push to origin
 # find the button "Compare and pull request"
 # submit a PR
 ```
-=======
-# 
->>>>>>> 03914abe8a038b36bb4b3bb3b861d15f0153f8fa
+
+### where to find your PR history
+1. 打開你的 GitHub 頁面，例如：
+https://github.com/<你的帳號>
+
+
+2. 點選上方的 Pull requests 分頁。
+網址長這樣： https://github.com/pulls
+
+3. 這裡會顯示你建立或參與過的所有 PR（跨所有 repo，不管是 upstream 還是 origin）。
+
+### compare the branches
+* Your topic branch (also known as “feature branch”) is the branch where you’re making your changes in your forked repository (e.g. my-topic-branch).
+* The base branch is the branch in the upstream (central) repository that you want to merge your changes into (e.g. main).
+* The pull request compares the changes proposed by the topic branch (my-topic-branch) with the base branch (main), so my-topic-branch is known as the “compare branch”.
+
+```txt
+[the branch of upstream you want to merge to] <- [your feature branch]
+```
+
+
+
+# [Continuing making changes to files in your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=desktop#making-changes-to-files-in-your-pull-request)
+After you have opened your pull request, you can continue making changes to the files **by adding new commits** to your head branch.
+(head branch is the one which you make an PR on)
+
+* head branch
+    → 就是你用來開 PR 的那個分支（例如 feature-abc）。
+
+* add new commits
+    → 你在本地端繼續修改檔案，git add → git commit → git push 到同一個分支。
+
+→ GitHub 會自動把這些新 commit 加進你原本的 PR 裡，PR 內容會更新，不需要再另外開一個新的 PR。
+
+## Steps
+1. you have made an PR：
+origin/feature-abc → upstream/main
+
+2. Reviewer says：
+請修正文件格式，還有多加一個測試。
+
+3. 你在"本地" feature-abc 分支修改and push to origin
+```bash
+git add . #(or specified file name)
+git commit -m "Fix docs and add test"
+git push -u origin feature-abc #(This have to be your feature branch / head branch) 
+```
+
+3. 這個新 commit 會自動出現在你已經開的 PR 裡。
+
+e.g. code-contribution
+```bash
+git add contributors\halzq.html       
+git commit -m "continue making changes and test pull request"
+> [add-halzq 520fb11] continue making changes and test pull request
+> 1 file changed, 2 insertions(+), 1 deletion(-)
+git remote -v
+>origin  https://github.com/halzq/code-contributions.git (fetch)
+>origin  https://github.com/halzq/code-contributions.git (push)
+>upstream        https://github.com/Roshanjossey/code-contributions.git (fetch)
+>upstream        https://github.com/Roshanjossey/code-contributions.git (push)
+git push -u origin add-halzq
+> Enumerating objects: 7, done.
+> Counting objects: 100% (7/7), done.
+> Delta compression using up to 16 threads
+> Compressing objects: 100% (4/4), done.
+> Writing objects: 100% (4/4), 484 bytes | 484.00 KiB/s, done. 
+> Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+> upstream        https://github.com/Roshanjossey/code-contributions.git (push)
+```
