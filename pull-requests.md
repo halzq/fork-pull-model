@@ -1,5 +1,6 @@
 # About pull requests
 A pull request is a proposal to merge a set of changes from one branch into another.
+Anyone with read access to a repository can create a pull request.
 ## About collaborative development models
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model
 ### a. Fork and pull model
@@ -124,3 +125,69 @@ git push -u origin add-halzq
 > Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
 > upstream        https://github.com/Roshanjossey/code-contributions.git (push)
 ```
+
+
+
+# [Enabling repository maintainer permissions on existing pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)
+
+When you open a Pull Request from your fork to the upstream repo, GitHub shows you a checkbox option:
+> Allow edits by maintainers
+
+Normally this just means the upstream maintainers can push commits directly to your PR branch (on your fork) — useful if they want to fix small things.
+
+## Security
+If you allow maintainers to edit your PR branch, and your fork has GitHub Actions workflows, then they also get the ability to edit your workflows.
+
+Editing workflows could expose your secrets (sensitive values stored in your fork’s settings) and give them more access to your repo than you might expect.
+
+
+
+# [Comparing commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/viewing-and-comparing-commits/comparing-commits)
+
+You can compare the state of your repository across branches, tags, commits, forks through **changing the path**. 
+
+[first, find the page for compare.]((https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases))
+
+## Comparing branches
+The most common use of Compare is to compare branches, such as when you're starting a new pull request.
+
+To compare different versions of your repository, **append /compare to your repository's path.**
+
+e.g
+> https://github.com/octocat/linguist/compare/master...octocat:linguist:an-example-comparison-for-docs
+
+This means that we are comparing master branch and an-example-comparison-for-docs branch under octocat/linguist repository.
+
+## [Comparing tags]
+e.g
+> https://github.com/octocat/linguist/compare/v2.2.0...octocat:v2.3.3
+
+we are comparing base:v2.2.0 <- compare:v2.3.3
+
+## Comparing commits
+To quickly compare two commits or Git Object IDs (OIDs) directly with each other in a **two-dot diff comparison** on GitHub, edit the URL of your repository's "Comparing changes" page.
+
+For example, 
+this URL uses the shortened SHA codes to compare commits f75c570 and 3391dcc: 
+> https://github.com/github-linguist/linguist/compare/f75c570..3391dcc.
+
+## Comparing across forks
+You can also preface the branch name with a user name and a repository name. For example, specifying octocat:awesome-app:main would use the main branch in the octocat/awesome-app repository
+
+e.g.
+> https://github.com/6un9-h0-Dan/linguist/compare/master...1974kpkpkp:linguist:master
+
+>  6un9-h0-Dan/linguist: master < 1974kpkpkp/linguist:master
+
+## Comparisons across commits
+You can compare a single commit in Git to the commit's predecessors using two types of notation.
+>96d29b7^^^^^
+>> Represents the commit five commits prior to 96d29b7.
+>> https://github.com/octocat/linguist/compare/octocat:96d29b7%5E%5E%5E%5E%5E...octocat:96d29b7
+
+> 96d29b7~5
+>> Represents the commit five commits prior to 96d29b7.
+>> https://github.com/octocat/linguist/compare/octocat:96d29b7%7E5...octocat:96d29b7
+
+
+### [Three-dot and two-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons)
