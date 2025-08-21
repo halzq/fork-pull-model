@@ -190,4 +190,60 @@ You can compare a single commit in Git to the commit's predecessors using two ty
 >> https://github.com/octocat/linguist/compare/octocat:96d29b7%7E5...octocat:96d29b7
 
 
-### [Three-dot and two-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons)
+
+
+
+# [Three-dot and two-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons)
+
+```
+A -- B -- C  (main)
+       \
+        D -- E  (feature)
+```
+## Three-dot Git diff comparison
+The three-dot comparison shows the difference between the latest common commit of both branches (merge base) and the most recent version of the topic branch.
+* git diff main..feature
+- Comparing C (base latest commit) and E (topic latast commit)
+
+
+## Two-dot Git diff comparison
+The two-dot comparison shows the difference between the latest state of the base branch (for example, main) and the most recent version of the 
+topic branch.
+* git diff main...feature
+- Comparing B (common ancestor) and E (topic latast commit)
+
+
+### Conclusion
+Two-dot (..) → 看兩個分支的 最終差異，適合 **合併前的狀態比對**。
+Three-dot (...) → 看 某分支自分岔以來的改動，適合 **PR / code review**。
+
+### Solution: Merging often
+- To avoid getting confused, merge the base branch (for example, main) into your topic branch frequently. 
+- By merging the base branch, the diffs shown by two-dot and three-dot comparisons are the same. 
+- We recommend merging a pull request as soon as possible.
+- This encourages contributors to make pull requests smaller, which is recommended in general.
+
+情境 1：你直接在公司/團隊的 主 repo 開發
+```bash
+git fetch origin
+git checkout topic
+git merge origin/main   # 或 git rebase origin/main
+```
+
+情境 2：你在 Fork 的 repo 開發（典型 GitHub 開源協作）
+```bash
+# 第一次設定 upstream
+git remote add upstream https://github.com/official/project.git
+
+# 取得 upstream 的最新更新
+git fetch upstream
+
+# 把官方的 main 合併回你的分支
+git checkout topic
+git merge upstream/main   # 或 git rebase upstream/main
+
+# 4. 把更新後的分支 push 回自己的 repo (fork)
+git push origin topic
+
+# 5. make PR
+```
